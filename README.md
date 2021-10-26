@@ -12,7 +12,7 @@ Métodos Aceitos POST, GET. <br>
 
 ### ENDPOINTS 
 ## /shipper - Método POST <br>
-Este endpoint é utilizado para cadastro de Expedidores / Clientes no banco de dados, necessário que sejá enviado no body da requisição um .json conforme abaixo.<br>
+Este endpoint é utilizado para cadastro de Expedidores / Clientes no banco de dados, necessário que seja enviado no body da requisição um .json conforme abaixo.<br>
 ```
 { 
   "name": "Nome Cliente",
@@ -32,7 +32,7 @@ Este endpoint lista todos os Expedidores / Clientes cadastrado no banco de dados
 ![image](https://user-images.githubusercontent.com/78616150/138967233-2f8bbdb2-1209-4160-8f19-9c120e25e94e.png)
 
 ## /transporter - Método POST <br>
-Este endpoint é utilizado para cadastro de Transportadores no banco de dados, necessário que sejá enviado no body da requisição um .json conforme abaixo.<br>
+Este endpoint é utilizado para cadastro de Transportadores no banco de dados, necessário que seja enviado no body da requisição um .json conforme abaixo.<br>
 ```
 {
   "name": "Transportadora",
@@ -52,7 +52,7 @@ Este endpoint lista todos os transportadores cadastrado no banco de dados.
 ![image](https://user-images.githubusercontent.com/78616150/138967971-0862db74-bb9c-4372-8349-ff257963b719.png)
 
 ## /offer - Método POST <br>
-Este endpoint é utilizado para cadastro de Ofertas de Frete no banco de dados, necessário que sejá enviado no body da requisição um .json conforme abaixo.<br>
+Este endpoint é utilizado para cadastro de Ofertas de Frete no banco de dados, necessário que seja enviado no body da requisição um .json conforme abaixo.<br>
 ```
 {
   "id_shipper": 1,
@@ -77,4 +77,26 @@ Caso o id_shipper exista no banco de dados, a oferta de frete é cadastrada com 
 Este endpoint lista todas as ofertas de frete cadastrada no banco de dados.
 ![image](https://user-images.githubusercontent.com/78616150/138970208-ded0bd94-c4c1-4c93-985b-c388969fb191.png)
 
+## /offertransport - Método POST <br>
+Este endpoint é utilizado para que transportadoras ofereçam seus serviços para lista de fretes cadastrados em /offers, necessário que seja enviado no body da requisição um .json conforme abaixo.<br>
+```
+{
+  "id_transporter": 12,
+  "id_offer": 1,
+  "value": 105.00,
+  "amount": 230.00
+}
+```
+Todos os campos são obrigatórios, caso o body não contenha todas informações a API retorna um erro:
+![image](https://user-images.githubusercontent.com/78616150/138973771-5e069843-4447-4d3f-a8ad-fa0cfe8851ef.png)
 
+A chave id_transporter deve estar cadastrada no banco de dados (/transporter), utilize o endpoint (/transporters) para listar as transportadoras cadastradas.
+Caso o id_transporter não exista no banco, um erro é retornado:
+![image](https://user-images.githubusercontent.com/78616150/138973909-cb88ec3a-8cdd-4e36-8556-a844e4a85ab2.png)
+
+A chave id_offer deve estar cadastrada no banco de dados (/offer), utilize o endpoint (/offers) para listar todas as ofertas de frete cadastradas.
+Caso o id_offer não exista no banco, um erro é retornado:
+![image](https://user-images.githubusercontent.com/78616150/138974058-f645b90f-c412-4966-a8aa-049cdd5dca91.png)
+
+Caso o id_transporter e id_offer exista no banco de dados, a oferta de frete é cadastrada com sucesso:
+![image](https://user-images.githubusercontent.com/78616150/138974195-9aa753b1-ff8f-44b8-a31c-4820a8626cbe.png)
