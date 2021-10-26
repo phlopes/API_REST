@@ -5,6 +5,12 @@ const createShipper = async (name, doc, about, active, site) => {
   return shipper;
 };
 
+const getShippers =async () => {
+  const shippers = await shipperModel.getShippers();
+  return shippers;
+};
+
 module.exports = {
-  createShipper
+  createShipper,
+  getShippers
 };

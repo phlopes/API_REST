@@ -6,6 +6,12 @@ const createShipper = async (req, res) => {
   return res.status(201).json(shipper)
 };
 
+const getShippers =async (_req, res) => {
+  const shippers = await shipperService.getShippers();
+  return res.status(200).json(shippers);
+};
+
 module.exports = {
-  createShipper
+  createShipper,
+  getShippers
 };

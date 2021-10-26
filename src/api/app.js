@@ -6,5 +6,6 @@ const app = express();
 app.use(bodyParser.json());
 
 app.post('/shipper', shipperController.createShipper);
+app.get('/shipper', shipperController.getShippers);
 
 module.exports = app;
