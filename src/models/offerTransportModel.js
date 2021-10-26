@@ -6,6 +6,13 @@ const createOfferTransport = async (id_transporter, id_offer, value, amount) => 
   return { id_transporter, id_offer, value, amount };
 };
 
-module.exports = {
-  createOfferTransport
+const getOfferTransports = async () => {
+  const db = await connect();
+  const offerTransports = await db.collection('offersTransports').find().toArray();
+  return offerTransports;
 }
+
+module.exports = {
+  createOfferTransport,
+  getOfferTransports
+};

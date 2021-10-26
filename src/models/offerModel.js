@@ -1,4 +1,5 @@
 const connect = require('./connection');
+const { ObjectId } = require('mongodb');
 
 const createOffer = async (id_shipper, from, to, initial_value, amount, amount_type) => {
   const db = await connect();
@@ -10,9 +11,18 @@ const getOffers = async () => {
   const db = await connect();
   const offers = await db.collection('offers').find().toArray();
   return offers;
-}
+};
+
+const getOfferById = async (id) => {
+  if (!ObjectId.isValid(id)) return null;
+  const db = await connect();
+  const offer = await db.collection('offers').findOne(ObjectId(id));
+  return offer;
+};
+
 
 module.exports = {
   createOffer,
-  getOffers
+  getOffers,
+  getOfferById
 };

@@ -11,6 +11,7 @@ const checkShipper = async (id) => {
 
 const status = {
   code400: 400,
+  code404: 404,
 };
 
 const message = {
@@ -24,7 +25,7 @@ const message = {
 };
 
 const validationFields = async (id_shipper, from, to, initial_value, amount, amount_type) => {
-  const { code400 } = status;
+  const { code400, code404 } = status;
   const { ID_REQUIRED, FROM_REQUIRED, TO_REQUIRED, VALUE_REQUIRED, AMOUNT_REQUIRED, TYPE_REQUIRED, SHIPPER_NOT_EXIST } = message;
 
   switch (true) {
@@ -34,7 +35,7 @@ const validationFields = async (id_shipper, from, to, initial_value, amount, amo
     case requiredField(initial_value): return { code: code400, message: VALUE_REQUIRED };
     case requiredField(amount): return { code: code400, message: AMOUNT_REQUIRED };
     case requiredField(amount_type): return { code: code400, message: TYPE_REQUIRED };
-    case (await checkShipper(id_shipper)): return { code: code400, message: SHIPPER_NOT_EXIST  }
+    case (await checkShipper(id_shipper)): return { code: code404, message: SHIPPER_NOT_EXIST  }
     default: return {}
   }
 };
