@@ -6,7 +6,7 @@ const createShipper = async (name, doc, about, active, site) => {
   return {_id: shipper.insertedId, name, doc, about, site };
 };
 
-const getShippers =async () => {
+const getShippers = async () => {
   const db = await connect();
   const shippers = await db.collection('shippers').find().toArray();
   return shippers;

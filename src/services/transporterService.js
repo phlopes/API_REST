@@ -5,6 +5,12 @@ const createTransporter = async (name, doc, about, active, site) => {
   return transporter;
 };
 
+const getTransporters =async () => {
+  const transporter = await transporterModel.getTransporters();
+  return transporter;
+};
+
 module.exports = {
-  createTransporter
+  createTransporter,
+  getTransporters
 };

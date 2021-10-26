@@ -7,7 +7,8 @@ const app = express();
 app.use(bodyParser.json());
 
 app.post('/shipper', shipperController.createShipper);
-app.get('/shipper', shipperController.getShippers);
+app.get('/shippers', shipperController.getShippers);
 app.post('/transporter', transporterController.createTransporter);
+app.get('/transporters', transporterController.getTransporters);
 
 module.exports = app;

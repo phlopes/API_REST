@@ -6,7 +6,14 @@ const createTransporter = async (req, res) => {
   const transporter = await transporterService.createTransporter(name, doc, about, active, site);
   return res.status(201).json(transporter)
 };
+
+const getTransporters =async (_req, res) => {
+  const transporter = await transporterService.getTransporters();
+  return res.status(200).json(transporter);
+};
+
   
 module.exports = {
   createTransporter,
+  getTransporters
 };
