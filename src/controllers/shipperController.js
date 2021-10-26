@@ -10,7 +10,7 @@ const createShipper = async (req, res) => {
   return res.status(201).json({ message: 'Customer registered successfully' })
 };
 
-const getShippers =async (_req, res) => {
+const getShippers = async (_req, res) => {
   const shippers = await shipperService.getShippers();
   return res.status(200).json(['Registered Customers', shippers]);
 };
