@@ -1,4 +1,5 @@
 const connect = require('./connection');
+const { ObjectId } = require('mongodb');
 
 const createShipper = async (name, doc, about, active, site) => {
   const db = await connect();
@@ -12,7 +13,15 @@ const getShippers = async () => {
   return shippers;
 }
 
+const getShipperById = async (id) => {
+  if (!ObjectId.isValid(id)) return null;
+  const db = await connect();
+  const shipper = await db.collection('shippers').findOne(ObjectId(id));
+  return shipper;
+};
+
 module.exports = {
   createShipper,
-  getShippers
+  getShippers,
+  getShipperById
 };
