@@ -5,6 +5,12 @@ const createOffer = async (id_shipper, from, to, initial_value, amount, amount_t
   return offer;
 };
 
+const getOffers = async () => {
+  const offers = await offerModel.getOffers();
+  return offers;
+};
+
 module.exports = {
-  createOffer
+  createOffer,
+  getOffers
 };

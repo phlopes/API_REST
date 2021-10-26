@@ -6,6 +6,12 @@ const createOffer = async (req, res) => {
   return res.status(201).json(offer);
 };
 
+const getOffers = async (_req, res) => {
+  const offers = await offerService.getOffers();
+  return res.status(200).json(offers);
+};
+
 module.exports = {
-  createOffer
+  createOffer,
+  getOffers
 };
