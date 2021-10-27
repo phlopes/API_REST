@@ -98,5 +98,9 @@ A chave id_offer deve estar cadastrada no banco de dados (/offer), utilize o end
 Caso o id_offer não exista no banco, um erro é retornado:
 ![image](https://user-images.githubusercontent.com/78616150/138974058-f645b90f-c412-4966-a8aa-049cdd5dca91.png)
 
-Caso o id_transporter e id_offer exista no banco de dados, a oferta de frete é cadastrada com sucesso:
+Caso o id_transporter e id_offer exista no banco de dados, o serviço para frete é cadastrado com sucesso:
 ![image](https://user-images.githubusercontent.com/78616150/138974195-9aa753b1-ff8f-44b8-a31c-4820a8626cbe.png)
+
+## /offertransports - Método GET <br>
+Este endpoint lista todas as transportadoras que ofereceram o serviço para os fretes cadastrados em /offers. <br>
+![image](https://user-images.githubusercontent.com/78616150/139078080-b8bd0237-bee5-44d3-b198-d8e254aaf7b4.png)
