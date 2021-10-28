@@ -1,16 +1,28 @@
-Bem Vindos,
 
-Nome do Projeto: API_REST; <br>
-Tecnologias utilizadas: Node.JS, Express, MongoDB
+# Projeto API REST<br>
+Tecnologias utilizadas: 
+```
+Node.JS, Express, MongoDB.
+```
+# Objetivo do Projeto<br>
+```
+API criada com o proposito de receber dados de clientes e transportadores, bem como cadastro de ofertas de frete.
+```
+# Arquitetura<br>
+```
+API criada utilizando conceitos da arquitetura MSC, visando alta escabilidade da aplicação, fácil substituição 
+da solução de database bem como a organização.
+```
+# Como rodar o Projeto<br>
+1. Clone o repositório
+  * `git clone https://github.com/phlopes/API_GoFluxBrasil.git`.
+  * Entre na pasta do repositório que você acabou de clonar:
+    * `API_GoFluxBrasil`
+ 2. Instale as dependências e execulte o projeto
+  * `npm install` 
+  * `npm start` 
 
-API criada com a função de receber dados de clientes e transportadoras, bem como cadastro de fretes.
-
-Modo de Usar (Documentação): <br>
-Ao clonar o projeto, favor execultar o comando npm install. 
-
-Métodos Aceitos POST, GET. <br>
-
-### ENDPOINTS 
+# ENDPOINTS 
 ## /shipper - Método POST <br>
 Este endpoint é utilizado para cadastro de Expedidores / Clientes no banco de dados, necessário que seja enviado no body da requisição um .json conforme abaixo.<br>
 ```
