@@ -1,19 +1,19 @@
 
 # Projeto API REST<br>
-Tecnologias utilizadas: 
-```
+## Tecnologias utilizadas
+`
 Node.JS, Express, MongoDB.
-```
-# Objetivo do Projeto<br>
-```
+`
+## Objetivo do Projeto<br>
+`
 API criada com o proposito de receber dados de clientes e transportadores, bem como cadastro de ofertas de frete.
-```
-# Arquitetura<br>
-```
+`
+## Arquitetura<br>
+`
 API criada utilizando conceitos da arquitetura MSC, visando alta escabilidade da aplicação, fácil substituição 
 da solução de database bem como a organização.
-```
-# Como rodar o Projeto<br>
+`
+## Como rodar o Projeto<br>
 1. Clone o repositório
   * `git clone https://github.com/phlopes/API_GoFluxBrasil.git`.
   * Entre na pasta do repositório que você acabou de clonar:
