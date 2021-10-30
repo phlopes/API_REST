@@ -3,13 +3,14 @@ const { expect } = require('chai');
 const { MongoClient } = require('mongodb');
 const { MongoMemoryServer } = require('mongodb-memory-server');
 
-const mongoConnection = require('../../src/models/connection');
-const ShipperModel = require('../../src/models/shipperModel');
+const mongoConnection = require('../models/connection');
+const ShipperModel = require('../models/shipperModel');
+const TransporterModel = require('../models/transporterModel')
 
-describe('Testando a camada shipperModel', () => {
+describe('Testando a camada Model', () => {
   let mockConnection;
 
-  const payloadShipper = {
+  const payload = {
     name: 'Cliente 01',
     doc: '00.000.000/0000-00',
     about: 'sobre o cliente 01',
@@ -37,22 +38,27 @@ describe('Testando a camada shipperModel', () => {
 
  describe('Quando um Expedidor/Cliente é cadastrado com sucesso', () => {
   it('retorna um objeto', async() => {
-     const response = await ShipperModel.createShipper(payloadShipper);
+     const response = await ShipperModel.createShipper(payload);
      expect(response).to.be.a('object');
   });
 
   it('esse objeto possui um id do novo Expedidor/Cliente inserido', async () => {
-      const response = await ShipperModel.createShipper(payloadShipper);
-
+      const response = await ShipperModel.createShipper(payload);
       expect(response).to.have.a.property('_id');
   });
-
-  // it('deve existir um Expedidor/Cliente com o nome cadastrado!', async () => {
-  //    await ShipperModel.createShipper(payloadShipper);
-  //    const shipperCreated = await mockConnection.collection('shippers').findOne({ name: payloadShipper.name });
-  //    expect(shipperCreated).to.be.not.null;
-  //  });
-
 });
+
+describe('Quando um Transportador é cadastrado com sucesso', () => {
+  it('retorna um objeto', async() => {
+     const response = await TransporterModel.createTransporter(payload);
+     expect(response).to.be.a('object');
+  });
+
+  it('esse objeto possui um id do novo Transportador inserido', async () => {
+      const response = await TransporterModel.createTransporter(payload);
+      expect(response).to.have.a.property('_id');
+  });
+});
+
 
 });
