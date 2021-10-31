@@ -9,7 +9,6 @@ const OfferModel = require('../models/offerModel');
 const offersTransportModel = require('../models/offerTransportModel')
 
 describe('Testando a camada Model', () => {
-  let mockConnection;
 
   const payload = {
     name: 'Cliente 01',
@@ -35,6 +34,7 @@ describe('Testando a camada Model', () => {
   }
   
   before(async () => {
+    let mockConnection;
     const DBServer = new MongoMemoryServer();
     const URLMock = await DBServer.getUri();
 
