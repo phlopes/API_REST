@@ -1,10 +1,6 @@
 const { expect } = require('chai');
-const sinon = require('sinon');
 const OfferService = require('../services/offerService');
 const OfferModel = require('../models/offerModel');
-
-const { MongoClient } = require('mongodb');
-const { MongoMemoryServer } = require('mongodb-memory-server');
 
 describe('Testando a camada OfferService', () => {
   const payload = {
@@ -16,25 +12,6 @@ describe('Testando a camada OfferService', () => {
   amount_type: "TON"  
   };
 
-  before(async () => {
-    let mockConnection;
-    const DBServer = new MongoMemoryServer();
-    const URLMock = await DBServer.getUri();
-
-    mockConnection = await MongoClient
-      .connect(URLMock, {
-        useNewUrlParser: true,
-        useUnifiedTopology: true
-      })
-
-    sinon.stub(MongoClient, 'connect').resolves(mockConnection);
-  });
-
-  after(async () => {
-    MongoClient.connect.restore();
- });
-
- 
   describe('Quando algum campo não é preenchido, retorna uma mensagem de erro.', () => {
     it('Quando o id_shipper não é preenchido', async () => {
       const { from, to, initial_value, amount, amount_type } = payload;
