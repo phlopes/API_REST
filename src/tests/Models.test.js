@@ -3,10 +3,10 @@ const { expect } = require('chai');
 const { MongoClient } = require('mongodb');
 const { MongoMemoryServer } = require('mongodb-memory-server');
 
-const mongoConnection = require('../models/connection');
 const ShipperModel = require('../models/shipperModel');
 const TransporterModel = require('../models/transporterModel')
 const OfferModel = require('../models/offerModel');
+const offersTransportModel = require('../models/offerTransportModel')
 
 describe('Testando a camada Model', () => {
   let mockConnection;
@@ -19,12 +19,19 @@ describe('Testando a camada Model', () => {
   };
 
   const payloadOffer = {
-      id_shipper: 1,
-      from: "Porto Alegre - RS",
-      to: "São Paulo - SP",
-      initial_value: 130.00,
-      amount: 300.00,
-      amount_type: "TON"
+    id_shipper: 1,
+    from: "Porto Alegre - RS",
+    to: "São Paulo - SP",
+    initial_value: 130.00,
+    amount: 300.00,
+    amount_type: "TON"
+  }
+
+  const payloadOfferTransport = {
+    id_transporter: 12,
+    id_offer: 1,
+    value: 105.00,
+    amount: 230.00
   }
   
   before(async () => {
@@ -77,6 +84,18 @@ describe('Quando uma oferta de transporte é cadastrado com sucesso', () => {
   it('esse objeto possui um id_shipper apontando para o cliente que cadastrou a oferta', async () => {
       const response = await OfferModel.createOffer(payloadOffer);
       expect(response).to.have.a.property('id_shipper');
+  });
+});
+
+describe('Quando uma oferta de transporte é cadastrado com sucesso', () => {
+  it('retorna um objeto', async() => {
+     const response = await offersTransportModel.createOfferTransport(payloadOfferTransport);
+     expect(response).to.be.a('object');
+  });
+
+  it('esse objeto possui um id_transporter apontando para a transṕrtadora que ofertou o serviço', async () => {
+      const response = await offersTransportModel.createOfferTransport(payloadOfferTransport);
+      expect(response).to.have.a.property('id_transporter');
   });
 });
 
