@@ -1,7 +1,7 @@
 const offerTransportModel = require('../models/offerTransportModel');
 const { validationFields } = require('../validations/offerTransportValidation');
 
-const createOfferTransport = async (id_transporter, id_offer, value, amount) => {
+const createOfferTransport = async ({ id_transporter, id_offer, value, amount }) => {
   const validation = await validationFields(id_transporter, id_offer, value, amount)
   if (validation.message) return validation;
 
