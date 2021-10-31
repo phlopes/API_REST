@@ -18,7 +18,6 @@ describe('Testando a camada Model', () => {
   };
   
   before(async () => {
-    console.log('antes');
     const DBServer = new MongoMemoryServer();
     const URLMock = await DBServer.getUri();
 
@@ -27,13 +26,12 @@ describe('Testando a camada Model', () => {
         useNewUrlParser: true,
         useUnifiedTopology: true
       })
-      .then((conn) => conn.db('BancoDeDados'));
 
-    sinon.stub(mongoConnection, 'connection' ).resolves(mockConnection);
+    sinon.stub(MongoClient, 'connect').resolves(mockConnection);
   });
 
   after(async () => {
-    mongoConnection.connection.restore();
+    MongoClient.connect.restore();
  });
 
  describe('Quando um Expedidor/Cliente é cadastrado com sucesso', () => {
@@ -59,6 +57,5 @@ describe('Quando um Transportador é cadastrado com sucesso', () => {
       expect(response).to.have.a.property('_id');
   });
 });
-
 
 });
