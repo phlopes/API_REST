@@ -1,7 +1,7 @@
 const transporterModel = require('../models/transporterModel');
 const { validationFields } = require('../validations/FieldsValidation');
 
-const createTransporter = async (name, doc, about, active, site) => {
+const createTransporter = async ({ name, doc, about, active, site }) => {
   const validations = validationFields(name, doc, about, site);
   if (validations.message) return validations;
 
