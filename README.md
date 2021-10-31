@@ -22,6 +22,10 @@ da solução de database bem como a organização.
   * `npm install` 
   * `npm start` 
 
+## Como rodar os Testes<br>
+  * `npm start` 
+  * `npm test` 
+
 # ENDPOINTS 
 ## /shipper - Método POST <br>
 Este endpoint é utilizado para cadastro de Expedidores / Clientes no banco de dados, necessário que seja enviado no body da requisição um .json conforme abaixo.<br>
