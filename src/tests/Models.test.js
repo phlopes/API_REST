@@ -6,6 +6,7 @@ const { MongoMemoryServer } = require('mongodb-memory-server');
 const mongoConnection = require('../models/connection');
 const ShipperModel = require('../models/shipperModel');
 const TransporterModel = require('../models/transporterModel')
+const OfferModel = require('../models/offerModel');
 
 describe('Testando a camada Model', () => {
   let mockConnection;
@@ -16,6 +17,15 @@ describe('Testando a camada Model', () => {
     about: 'sobre o cliente 01',
     site: 'https://cliente01.com.br'
   };
+
+  const payloadOffer = {
+      id_shipper: 1,
+      from: "Porto Alegre - RS",
+      to: "São Paulo - SP",
+      initial_value: 130.00,
+      amount: 300.00,
+      amount_type: "TON"
+  }
   
   before(async () => {
     const DBServer = new MongoMemoryServer();
@@ -55,6 +65,18 @@ describe('Quando um Transportador é cadastrado com sucesso', () => {
   it('esse objeto possui um id do novo Transportador inserido', async () => {
       const response = await TransporterModel.createTransporter(payload);
       expect(response).to.have.a.property('_id');
+  });
+});
+
+describe('Quando uma oferta de transporte é cadastrado com sucesso', () => {
+  it('retorna um objeto', async() => {
+     const response = await OfferModel.createOffer(payloadOffer);
+     expect(response).to.be.a('object');
+  });
+
+  it('esse objeto possui um id_shipper apontando para o cliente que cadastrou a oferta', async () => {
+      const response = await OfferModel.createOffer(payloadOffer);
+      expect(response).to.have.a.property('id_shipper');
   });
 });
 
