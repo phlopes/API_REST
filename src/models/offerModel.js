@@ -1,7 +1,7 @@
 const { connection } = require('./connection');
 const { ObjectId } = require('mongodb');
 
-const createOffer = async ({ id_shipper, from, to, initial_value, amount, amount_type }) => {
+const createOffer = async (id_shipper, from, to, initial_value, amount, amount_type) => {
   const db = await connection();
   const offer = await db.collection('offers').insertOne({ id_shipper, from, to, initial_value, amount, amount_type });
   return { id_shipper, from, to, initial_value, amount, amount_type };
