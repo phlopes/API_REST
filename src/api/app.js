@@ -9,11 +9,11 @@ const offerTransportController = require('../controllers/offerTransportControlle
 const app = express();
 app.use(bodyParser.json());
 
-// var corsOptions = {
-//     origin: 'http://localhost:3000',
-//     };
+var corsOptions = {
+    origin: 'http://localhost:3000',
+    };
     
-// app.use(cors(corsOptions)); 
+app.use(cors(corsOptions)); 
 
 app.post('/shipper', shipperController.createShipper);
 app.get('/shippers', shipperController.getShippers);
