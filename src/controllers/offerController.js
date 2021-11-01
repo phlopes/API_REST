@@ -3,7 +3,7 @@ const { getShipperById } = require('../models/shipperModel');
 
 const createOffer = async (req, res) => {
   const { id_shipper, from, to, initial_value, amount, amount_type } = req.body;
-  const { code, message } = await offerService.createOffer(id_shipper, from, to, initial_value, amount, amount_type);
+  const { code, message } = await offerService.createOffer({ id_shipper, from, to, initial_value, amount, amount_type });
   if (message) return res.status(code).json({ message });
   const {name} = await getShipperById(id_shipper)
 

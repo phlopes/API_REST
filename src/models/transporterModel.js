@@ -1,7 +1,7 @@
 const { connection } = require('./connection');
 const { ObjectId } = require('mongodb');
 
-const createTransporter = async ({ name, doc, about, active, site }) => {
+const createTransporter = async (name, doc, about, active, site) => {
   const db = await connection();
   const transporter = await db.collection('transporters').insertOne({ name, doc, about, active, site });
   return {_id: transporter.insertedId, name, doc, about, site };
