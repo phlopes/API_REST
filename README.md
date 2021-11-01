@@ -15,9 +15,9 @@ da solução de database bem como a organização.
 `
 ## Como rodar o Projeto<br>
 1. Clone o repositório
-  * `git clone https://github.com/phlopes/API_GoFluxBrasil.git`.
+  * `git clone git@github.com:phlopes/API_REST.git`.
   * Entre na pasta do repositório que você acabou de clonar:
-    * `API_GoFluxBrasil`
+    * `API_REST`
  2. Instale as dependências e execulte o projeto
   * `npm install` 
   * `npm start` 
