@@ -1,7 +1,8 @@
 const { connection } = require('./connection');
 const { ObjectId } = require('mongodb');
 
-const createShipper = async ({ name, doc, about, active, site }) => {
+const createShipper = async (name, doc, about, active, site) => {
+  console.log('model',name);
   const db = await connection();
   const shipper = await db.collection('shippers').insertOne({ name, doc, about, active, site });
   return {_id: shipper.insertedId, name, doc, about, site };

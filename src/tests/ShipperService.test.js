@@ -13,7 +13,7 @@ describe('Testando a camada ShipperService', () => {
   describe('Quando algum campo não é preenchido, retorna uma mensagem de erro.', () => {
     it('Quando o name não é preenchido', async () => {
       const { doc, about, active, site } = payload;
-      const response = await ShipperService.createShipper({doc, about, active, site});
+      const response = await ShipperService.createShipper(doc, about, active, site);
       expect(response.code).to.be.equals(400);
       expect(response.message).to.be.equals('"name" is required');
     });

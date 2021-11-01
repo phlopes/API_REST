@@ -4,7 +4,8 @@ const createShipper = async (req, res) => {
   const { name, doc, about, site } = req.body;
   const active = true;
 
-  const { code, message } = await shipperService.createShipper(name, doc, about, active, site);
+  const { code, message } = await shipperService.createShipper({ name, doc, about, active, site });
+  console.log(name);
   if (message) return res.status(code).json({ message });
 
   return res.status(201).json({ message: 'Customer registered successfully' })
